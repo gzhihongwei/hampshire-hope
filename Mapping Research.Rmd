@@ -1,5 +1,5 @@
 ---
-title: "MApping Research"
+title: "Mapping Research"
 author: "Camille Bergeron"
 date: "September 2020"
 output: pdf_document
