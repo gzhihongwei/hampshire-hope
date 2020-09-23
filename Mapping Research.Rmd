@@ -1,0 +1,186 @@
+---
+title: "MApping Research"
+author: "Camille Bergeron"
+date: "September 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+rm(list= ls())
+```
+
+## All Libraries Used/Required
+
+```{r}
+library(usmap)
+library(ggplot2)
+library(tidycensus)
+library(mapview)
+library(dplyr)
+```
+
+
+# Trial 1
+
+## Downloading State/Map Data
+```{r}
+# map data
+maMapData <- map_data(map = 'county', region = 'massachusetts')
+stateMapData <- map_data(map = "state")
+  #these all come out as a data frames
+str(maMapData)
+str(stateMapData)
+
+# our data
+stateData <- state.x77
+  #this is a matrix
+str(stateData)
+
+stateData.df <- as.data.frame(stateData)
+
+StatePopulation <- read.csv("https://raw.githubusercontent.com/ds4stats/r-tutorials/master/intro-maps/data/StatePopulation.csv", as.is = TRUE)
+  #this is a dataframe
+str(StatePopulation)
+```
+
++ the function *map_data()* turns data from the "maps" package into a dataframe that can be used for plotting
++ since it's in the library, you need to install ggplot2
++ the different types of data will be used for different trials
++ *state.x77* is a pre-loaded library of data
++ the data was converted into a df for later function ability
+
+## Making Base Map
+
+```{r}
+# a map of the US in light green
+ggplot() +
+  geom_polygon(data = stateMapData, aes(x = long, y = lat, group = group),
+               color = "black", fill = "lightgreen") +
+  labs(title = "map of the united states", subtitle = "light green edition")
+
+# a map of MA counties in ligt blue
+ggplot() +
+  geom_polygon(data = maMapData, aes(x = long, y = lat, group = group),
+               color = "black", fill = "lightblue")
+```
+
++ the x variable is the longitude, and the y is the latitude, all of which are incorporated form the *map_data()* 
++ *labs()* is a modifier for ggplot2, you can make titles and subtitles
++ just a note that "group = group" is very important
+  * group is included as a column in the *state.data* df, adn corresponds to each state
+
+## Customizing the map
+
+_Organizing the necessary data:_
+```{r}
+#adjusting our pop data to match with our map data
+stateData.df <- cbind(tolower(state.name), stateData.df)
+colnames(stateData.df)[1] <- "region"
+
+mergedStates <- inner_join(stateMapData, stateData.df, by = "region")
+
+#to show how the inner_function works
+head(mergedStates)
+```
+
++ we adjusted our pop df to have the same structure as our map data, so we could join the two df using a diplyr function
+  * *inner_join* matches the two tables
+  * notice how the variables form our *stateData* are aligned with the 
+    *stateMapData*
+
+_Filling and creating the base map:_
+```{r}
+z <- ggplot()
+z <- z + geom_polygon(data = mergedStates, 
+                      aes(x = long, y = lat, group = group, fill = Income), 
+                      color = "white", size = 0.2)
+z
+```
+
++ this creates a heat map based on income. We could also do it based on illeteracy, or life expectancy, or whatever data we have
++ the *color* and *size* parameters at the end affect the color and width of the border lines, i.e. what's plotted
++ automatically adds a legend
+
+_Editing the grpah further:_
+```{r}
+z <- z + scale_fill_continuous(name = "Income",
+                               low = "lightgreen", high = "black",
+                               breaks = c(3000, 4000, 5000), 
+                               na.value = "grey40") 
+z
+```
+
++ since we names our US map "z", you can easily add to it through ggplot2
++ *scale_fill_continous()* helps to adjust the heat-ap aspect of the map
+  * you can also put limits on the scale. This would be represented as *limits = c(0, 4500)* but it needs to be w/i continuous
+
+
+## Some Other notes
+
++ it's possible to overlay two maps, such as county maps on top of US ma, all you need to do would be to do essentially *ggplot() + geom_polygon("map 1 details") + geom_polygon("map 2 details")*
++ you can also add points with the modifier *+ geom_points()*
++ you can also do different projections via *coord_map(projection = "")* but I don't know how relevant that is to this project
+
+# Trial 2
+
+## Downloading State/Map Data
+```{r}
+# map data
+newEngland <- c("MA", "ME", "NH", "VT", "CN", "RI")
+newEnglandMapData <- us_map(region = "counties", 
+                         include = newEngland)
+  #also a df
+str(newEnglandMapData)
+
+# our data
+data("countypov")
+  #this comes out as a tibble
+str(countypov)
+```
+
+## Making Base Map
+```{r}
+plot_usmap(include = newEngland)
+```
+
+## Customizing the map
+```{r}
+y <- plot_usmap(data = countypov, 
+           values = "pct_pov_2014", 
+           color = "white",
+           size = 0.3,
+           include = newEngland) +
+  scale_fill_continuous(name = "poverty rates") +
+  theme(legend.position = "left") +
+  labs(title = "New England Poverty Rates", subtitle = "By county (2014)")
+y
+```
+
++ the *values* parameter is a value that comes from the data parameter, which in this case is countypov
++ there are supported regions within *usamaps*, and new england is one of them. However, I did not realize until later. If you want the full list, go to the 1st link below
+
+Just a note, this data did not need to be modified because of its structure and the usamaps library. 
+
+# Other Attempts
+```{r}
+#censusKey <- "a48880f907819be83683af9f52bddaa3cf0f1d7a"
+#census_api_key(censusKey, install = T, overwrite = F)
+
+#county_census_data <- get_decennial(geography = "county", variables = "H005001", year = 1995, state = "MA", geometry = T)
+```
+
+Essentially, what tidycensus is supposed to do, is pull data from the US Census bureau. There's this whole process about an API key but something went wrong when I tried it. I'm not sure what, but I'll leave my code for future reference
+
+# List of cources I used
++ [mapping the US](https://cran.r-project.org/web/packages/usmap/vignettes/mapping.html)
+  * used for TRIAL 2
++ [guide to mapping](https://remiller1450.github.io/s230s19/Intro_maps.html)
+  * this was used for TRIAL 1
++ [tidycensus](https://walker-data.com/tidycensus/articles/basic-usage.html)
++ [API census key](https://walker-data.com/tidycensus/reference/census_api_key.html)
+
+## Other Useful Links
++ [intro to graphics](https://www.statmethods.net/advgraphs/ggplot2.html)
+
+These are all hyperliinks
