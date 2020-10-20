@@ -2,6 +2,7 @@ import os
 import PyPDF2
 import tabula
 import csv
+import pandas as pd
 '''
     For the given path, get the List of all files in the directory tree 
 '''
@@ -64,10 +65,13 @@ def main():
         # readinf the PDF file that contain Table Data
         # you can find find the pdf file with complete code in below
         # read_pdf will save the pdf table into Pandas Dataframe
-        df = tabula.read_pdf(elem)
-        print(elem[:-4])
-        df.to_csv('./mass_dot_gov_csv/' + elem[:-4] + ".csv", index=False)
-
+        df = tabula.read_pdf(elem, pages = "all", multiple_tables = True)
+        if len(df) != 0:
+            print("dataframe")
+            print(df)
+            tabula.convert_into(df, './mass_dot_gov_csv/' + elem[:-4] + ".csv")
+        else:
+            print("your object is a list !")
 
 
 if __name__ == '__main__':
