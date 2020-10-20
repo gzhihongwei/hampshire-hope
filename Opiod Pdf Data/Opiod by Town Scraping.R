@@ -69,6 +69,8 @@ rownames(table2) <- c(1:nrow(table2))
 write.csv(table1, "table1.csv")
 write.csv(table2, "table2.csv")
 
+# to consider: 
+  # https://stackoverflow.com/questions/36685805/how-to-find-the-county-for-each-city-in-a-vector-of-city-names-using-r
 
 
 

@@ -18,7 +18,7 @@ route.vars <- c("Color", "GoogleDescription", "IncludeInGoogle",
   # did NOT include RouteId in this sequence, because there are some other 
     # complications later
 
-# function to exttract this info from routes
+# function to extract this info from routes
 getRouteFilled <- function(field, dat) {
   
   # extracting nec lines
