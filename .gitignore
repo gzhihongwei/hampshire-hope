@@ -139,5 +139,4 @@ cython_debug/
 
 # pycharm
 .idea/
-
 /my_test_data
