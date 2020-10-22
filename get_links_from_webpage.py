@@ -24,7 +24,6 @@ class MyHTMLParser(HTMLParser):
     def __init__(self, only_download_links):
         """
         Class from html.parser package used to parse html text
-
         :param only_download_links: if true then self.links is only filled with links that end in "download"
         """
         super().__init__()
