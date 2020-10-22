@@ -139,4 +139,4 @@ cython_debug/
 
 # pycharm
 .idea/
->>>>>>> upstream/master
+/my_test_data
