@@ -110,10 +110,10 @@ if __name__ == '__main__':
     table_sunday_morning = table_sunday_morning.apply(lambda x: pd.Series(x.dropna().values)).fillna('')
     table_sunday_evening = table_sunday_evening.apply(lambda x: pd.Series(x.dropna().values)).fillna('')
 
-    table_weekday_morning.to_csv(r'weekday_morning.csv', index=False, header=True)
-    table_weekday_evening.to_csv(r'weekday_evening.csv', index=False, header=True)
-    table_saturday_morning.to_csv(r'saturday_morning.csv', index=False, header=True)
-    table_saturday_evening.to_csv(r'saturday_evening.csv', index=False, header=True)
-    table_sunday_morning.to_csv(r'sunday_morning.csv', index=False, header=True)
-    table_sunday_evening.to_csv(r'sunday_evening.csv', index=False, header=True)
+    table_weekday_morning.to_csv(r'./PVTA_Route_Data/weekday_morning.csv', index=False, header=True)
+    table_weekday_evening.to_csv(r'./PVTA_Route_Data/weekday_evening.csv', index=False, header=True)
+    table_saturday_morning.to_csv(r'./PVTA_Route_Data/saturday_morning.csv', index=False, header=True)
+    table_saturday_evening.to_csv(r'./PVTA_Route_Data/saturday_evening.csv', index=False, header=True)
+    table_sunday_morning.to_csv(r'./PVTA_Route_Data/sunday_morning.csv', index=False, header=True)
+    table_sunday_evening.to_csv(r'./PVTA_Route_Data/sunday_evening.csv', index=False, header=True)
 
