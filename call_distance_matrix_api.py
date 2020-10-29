@@ -38,11 +38,11 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
     str_of_dest = ""
     # creates a string of all the lats and longs of each origin point in the array of origins in the
     # form of lat,long|lat,long|...
-    for origin in origins:
+    for origin in json_origin:
         str_of_origin += str(origin[0]) + "," + str(origin[1]) + "|"
     # creates a string of all the lats and longs of each destination point in the array of destinations in the
     # form of lat,long|lat,long|...
-    for dest in destinations:
+    for dest in json_dest:
         str_of_dest += str(dest[0]) + "," + str(dest[1]) + "|"
 
     # removes the last | from both strings
@@ -112,12 +112,13 @@ def main():
     # # 141 East Main Street	Chicopee, MA 01020: 42.158780,-72.581460
 
     # for future testing: create two json files with an array of tuples for the origin and destination lat/long points
-    # json = call_distance_api(
-    #     [[42.114440, -72.597300]],
-    #     [[42.200460, -72.607480], [42.158780, -72.581460]],
-    #     API_KEY, 2020, 11, 5)
-    
-    # parse_distance(json, [(42.114440, -72.597300), (42.200460, -72.607480)], [(42.158780, -72.581460)])
+    # call_distance_api(
+    #     "test_origin.json",
+    #     "test_dest.json",
+    #     API_KEY, 2020, 11, 3, 15)
+
+
+
 
 if __name__ == "__main__":
     main()
