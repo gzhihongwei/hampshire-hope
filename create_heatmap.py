@@ -25,7 +25,8 @@ def get_reference_points(filepath):
 
     return reference_points
 
-def plot_mass_heatmap(points_dataframe,heat_feature_col):
+
+def plot_mass_heatmap(points_dataframe, heat_feature_col):
     # convert .shp files into GeoDataFrames
     mass_counties = gpd.read_file('./map_files/mass_counties/COUNTIES_POLY.shp')  # mass county borders
     mass_tows = gpd.read_file('./map_files/mass_towns/TOWNSSURVEY_POLY.shp')  # mass town borders
@@ -38,20 +39,24 @@ def plot_mass_heatmap(points_dataframe,heat_feature_col):
     mass_counties.plot(ax=ax, figsize=(10, 10), alpha=0.5, edgecolor='black', facecolor='red')
 
     # plot filtered points
-    points_dataframe.plot(ax=ax, cmap='viridis', column=heat_feature_col, legend=True)
+    points_dataframe.plot(ax=ax, cmap='viridis', column=heat_feature_col, legend=True,
+                          legend_kwds={'label': 'SPCS Coordinate System Easting Value'})
 
     # plot town and county borders on top
     mass_tows.plot(ax=ax, figsize=(10, 10), alpha=1, edgecolor='yellow', color='none')
     mass_counties.plot(ax=ax, figsize=(10, 10), alpha=1, edgecolor='black', facecolor='none')
 
+    ax.set_title('Example Hampshire County HeatMap')
+
     # show plot
     plt.show()
+
 
 def main():
     # load in reference points from json
     reference_points = get_reference_points('./my_test_data/points.json')
 
-    # convert latitude and longitude of each coordinate to the State Plane Coordinate System (SPC) for
+    # convert latitude and longitude of each coordinate to the State Plane Coordinate System (SPCS) for
     # compatibility with the Massachusetts shapefiles
     x_coords = []
     y_coords = []
@@ -80,7 +85,7 @@ def main():
     points = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df.x, df.y))
 
     # plot heatmap based on price column of geopandas dataframe
-    plot_mass_heatmap(points,'price')
+    plot_mass_heatmap(points, 'price')
 
     # # get box coords of geoplot mass map
     # print(f'mass geoplot map x coords range: {ax.get_xlim()}')
@@ -98,8 +103,6 @@ def main():
     # table3 = DBF('./map_files/min1latlong/MINLL1_ARC.dbf')
     # for i, record in enumerate(table3):
     #     print(i, record)
-
-
 
 
 if __name__ == '__main__':
