@@ -1,0 +1,155 @@
+street,city_state_zip,treatment_type,latitude,longitude
+471 Chestnut Street,"Springfield, MA  01107",Acute Treatment Services-Adults,42.1146392,-72.5976206
+298 Federal St.,"Greenfield, MA 01301",Acute Treatment Services-Adults,42.6010729,-72.5940028
+725 North Street,"Pittsfield, MA 01201",Acute Treatment Services-Adults,42.4595693,-73.24931
+1233 Main Street,"Holyoke, MA 01040",Acute Treatment Services-Adults,42.1661231,-72.633596
+151 South St.,"Cummington, MA 01026",Acute Treatment Services-Adults,42.4831653,-72.88450519999999
+107 Lincoln Street,"Worcester, MA 01605",Acute Treatment Services-Adults,42.2763579,-71.79491430000002
+"12 Queen Street, 5th ﬂoor","Worcester, MA 01610",Acute Treatment and Stabilization Services –Youth,42.25978250000001,-71.8138
+35 Heywood Street,"Springfield, MA 01104",Clinical Support Service,42.113297,-72.58472499999999
+298 Federal St.,"Greenfield, MA 01301",Clinical Support Service,42.6010729,-72.5940028
+725 North Street,"Pittsfield, MA 01201",Clinical Support Service,42.4595693,-73.24931
+1233 Main Street,"Holyoke, MA 01040",Clinical Support Service,42.1661231,-72.633596
+130 Pine Street,"Holyoke, MA 01040",Transitional Support Service ,42.2089174,-72.6122756
+91 East Mountain Road,"Westfield, MA 01085",Transitional Support Service ,42.110955,-72.7017225
+117 Park Ave.,"West Springfield, MA 01089",Outpatient Services,42.1052846,-72.6186937
+57 Maplewood Ave.,"Pittsfield, MA 01201",Outpatient Services,42.4548043,-73.2490885
+40 Bobala Road,"Holyoke, MA  01040",Outpatient Services,42.1665547,-72.6490714
+235 Maple Street,"Holyoke, MA 01040",Outpatient Services,42.2072615,-72.6089582
+110 Maple St.,"Springfield, MA 01105",Outpatient Services,42.1009311,-72.5813397
+110 Maple St.,"Springfield, MA 01105",Outpatient Services,42.1009311,-72.5813397
+471 Chestnut St.,"Springfield, MA 01107",Outpatient Services,42.1146392,-72.5976206
+417 Liberty Street,"Springfield, MA 01107",Outpatient Services,42.1142723,-72.58508239999999
+471 Chestnut St.,"Springfield, MA 01107",Outpatient Services,42.1146392,-72.5976206
+"77 Mill Street, Suite 251","Westfield, MA  01085",Outpatient Services,42.1116968,-72.7656093
+96 South St.,"Ware, MA",Outpatient Services,42.2521402,-72.24172250000001
+153 Magazine St.,"Springfield, MA 01109",Outpatient Services,42.1128377,-72.5776393
+333 East Street,"Pittsfield, MA  01201",Outpatient Services,42.4480832,-73.24709469999999
+124 American Legion Drive,"North Adams, MA 01247",Outpatient Services,42.6959091,-73.111817
+60 Cottage Street,"Great Barrington, MA 01230",Outpatient Services,42.1975144,-73.3582282
+251 Fenn Street,"Pittsfield, MA 01201",Outpatient Services,42.4499413,-73.2482421
+367 Pine Street,"Springfield, MA  01105",Outpatient Services,42.0940175,-72.57416549999999
+131 West Main St. 1st Floor,"Orange, MA 01364",Outpatient Services,42.5916352,-72.3156192
+102 Main St.,"Greenfield, MA 01301",Outpatient Services,42.587965,-72.60530399999999
+"1221 Main St, Suite 308","Holyoke, MA 01040",Outpatient Services,42.1668132,-72.63369089999999
+491 Main Street,"Athol, MA 01331",Outpatient Services,42.5938164,-72.2300407
+8 Atwood Drive,"Northampton, MA  01060",Outpatient Services,42.3030938,-72.6227859
+One Arch Place,"Greenfield, MA 01301",Outpatient Services,42.5914816,-72.60407769999999
+80 Congress St. Suite 106,"Springfield, MA 01104",Outpatient Services,42.10866730000001,-72.596064
+85 St George Road,"Springfield, MA  01104",Outpatient Services,42.1085034,-72.6022268
+2155 Main St.,"Springfield, MA 01104",Outpatient Services,42.1095206,-72.6004714
+40 Wright Street,"Palmer, MA  01069",Outpatient Services,42.1696245,-72.3411026
+575 Beech Street,"Holyoke, MA  01040",Outpatient Services,42.2003761,-72.6275517
+"155 Maple Street, Suite 304","Springfield, MA 01105",Outpatient Services,42.1004286,-72.5790129
+70 Court St. Suite 3,"Westfield, MA 01085",Outpatient Services,42.1196138,-72.7560328
+1323 Worcester St.,"Indian Orchard, MA 01151",Outpatient Services,42.1577558,-72.4997307
+1233 Main St.,"Holyoke, MA 01040",Outpatient Services,42.1661231,-72.633596
+185 West Ave.,"Ludlow, MA 01056",Outpatient Services,42.164648,-72.49353719999999
+211 N Main St.,"Petersham, MA 01366",Outpatient Services,42.5162327,-72.18407560000001
+303 Beech St.,"Holyoke, MA 01040",Outpatient Services,42.2041133,-72.61910379999999
+55 Federal Street,"Greenfield, MA  01301",Outpatient Services,42.589047,-72.5982698
+"140 High St., Suite 230","Springfield, MA 01105",Outpatient Services,42.10548259999999,-72.5794945
+"103 Myron St., Suite A","W. Springfield, MA 01089",Outpatient Services,42.1329768,-72.629992
+230 Maple Street,"Holyoke, MA 01040",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.2072048,-72.6083716
+380 Plainfield St.,"Springfield, MA 01107",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1171979,-72.61447009999999
+333 East St.,"Pittsfield, MA 01201",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.4480832,-73.24709469999999
+124 American Legion Drive,"North Adams, MA 01247",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.6959091,-73.111817
+60 Cottage St.,"Great Barrington, MA 01230",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1975144,-73.3582282
+40 Wright Street,"Palmer, MA  01069",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1696245,-72.3411026
+"1985 Main Street, Suite E","Springfield, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1072373,-72.5973525
+"306 Race Street, 2nd Floor","Holyoke, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.2004476,-72.6074821
+83 South St. Suite 180,"Ware, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.2535952,-72.2411578
+900 Memorial Avenue,"West Springfield, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.0954469,-72.6127637
+"53 Eagle St., 4th ﬂoor","Pittsfield, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.4515647,-73.25188659999999
+"77 Hospital Avenue, Suite 107","North Adams, MA 01247",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.7077243,-73.1097982
+"201 South Main St., Suite #3","Athol, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.5913444,-72.2424619
+411 Chandler St.,"Worcester, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.2639437,-71.8327659
+275 Nichols Rd.,"Fitchburg, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.5976464,-71.80568819999999
+50 Union Street,"West Springfield, MA 01089",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1041941,-72.6197711
+42 Summer St. Suite 201,"Pittsfield, MA",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.4528393,-73.253914
+51 Locust St.,"Northampton, MA 01060",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.3320418,-72.6539678
+568 Main St.,"Indian Orchard, MA 01151",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.155847,-72.4848243
+"125 Liberty Street, Suite 205","Springfield, MA 01103",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1081121,-72.5933674
+"152 North Street, Suite 250","Pittsfield, MA  01201",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.4508251,-73.2530541
+"70 Court Street, Suite 3","Westfield, MA  01085",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1196138,-72.7560328
+141 East Main Street,"Chicopee, MA  01020",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1586665,-72.58147009999999
+1448 North Main Street,"Palmer, MA  01069",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.1578629,-72.3308895
+33 Oak Street,"Worcester, MA  01609",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.2664285,-71.8080609
+"100 Central Street, Suite 3","Southbridge, MA 01550",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.0769109,-72.032048
+"76 Summer Street, Suite 045","Fitchburg, MA 01420",Office-based Opioid Treatment (Buprenorphine and Vivitrol Treatment),42.57935459999999,-71.7866236
+628 Center Street,"Chicopee, MA  01013",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.1327229,-72.6133673
+297 Pleasant Street,"Northampton, MA  01060",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.3163668,-72.626089
+177 Shelburne Road,"Greenfield, MA  01301",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.5875541,-72.62160779999999
+125 N Elm Street,"Westfield, MA  01085",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.13412539999999,-72.7402443
+511 East Columbus Ave,"Springfield, MA 01105",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.0896202,-72.5808481
+1233 Main Street,"Holyoke, MA  01040",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.1661231,-72.633596
+227 Mill Street,"Springfield, MA  01109",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.0929948,-72.5725059
+390 Merrill Rd.,"Pittsfield, MA 01201",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.4580514,-73.210898
+1274 Curran Highway,"North Adams, MA 01247",Opioid Treatment Programs (Methadone and Buprenorphine Treatment),42.6672381,-73.1072526
+187 Fairview Ave,"Chicopee, MA 01013",Residential Recovery Programs,42.1449676,-72.5965208
+57 Beacon Street,"Greenfield, MA  01301",Residential Recovery Programs,42.5969476,-72.5924289
+35 Congress Street,"Orange, MA 01364",Residential Recovery Programs,42.5851239,-72.3109709
+148 Montague City Road,"Greenfield, MA 01301",Residential Recovery Programs,42.578003,-72.579731
+59 South St.,"Ware, MA  01082",Residential Recovery Programs,42.2563471,-72.2410517
+29-33 Arch Street,"Springfield, MA  01107",Residential Recovery Programs,42.113484,-72.60826829999999
+507 Appleton Street,"Holyoke, MA  01040",Residential Recovery Programs,42.20973439999999,-72.6181198
+25 Graves Avenue,"Northampton, MA  01060",Residential Recovery Programs,42.322048,-72.6280293
+143 West Street,"Northampton, MA 01060",Residential Recovery Programs,42.3130366,-72.6417726
+202 Bradford Street,"Pittsfield, MA  01201",Residential Recovery Programs,42.4549629,-73.25612559999999
+121 Seymour St.,"Pittsfield, MA 01201",Residential Recovery Programs,42.4597346,-73.2517639
+89 Belmont Avenue Partum,"Springfield, MA  01109",Residential Recovery Programs,42.0894348,-72.5740812
+64 and 82 Temple St.,"Springfield, MA  01109",Residential Recovery Programs,42.1038879,-72.581844
+401 Liberty St.,"Springfield, MA 01104",Residential Recovery Programs,42.1141403,-72.5849427
+5 Madison Avenue,"Springfield, MA  01105",Residential Recovery Programs,42.0999152,-72.5748164
+14 Chestnut Place,"Ludlow, MA",Co-occurring Enhanced Residential Recovery Service,42.1575564,-72.48113599999999
+"20 Wilbraham Ave,","Springfield, MA",Co-occurring Enhanced Residential Recovery Service,42.1108959,-72.5612194
+742 Parker St.,"East Longmeadow, MA",Co-occurring Enhanced Residential Recovery Service,42.08338860000001,-72.489747
+298 Federal St.,"Greenfield, MA 01301",Co-occurring Enhanced Residential Recovery Service,42.6010729,-72.5940028
+298 Federal St.,"Greenfield, MA 01301",Jail Diversion Residential and Case Management,42.6010729,-72.5940028
+60 Wells Street,"Greenfield, MA 01301",Supportive Housing,42.58935,-72.60536859999999
+114 Calhoun Street,"Springfield, MA  01107",Supportive Housing,42.1177868,-72.6034512
+80 Commercial St.,"Holyoke, MA 01040",Supportive Housing,42.1978009,-72.61489209999999
+80 Commercial St.,"Holyoke, MA 01040",Supportive Housing,42.1978009,-72.61489209999999
+184 Bradford Street,"Pittsfield, MA  01201",Supportive Housing,42.455036,-73.255838
+214 Francis Ave.,"Pittsfield, MA. 01201",Supportive Housing,42.4556157,-73.2558722
+1509 N Main St.,"Palmer, MA 01069",Supportive Housing,42.1606315,-72.33559919999999
+471 Chestnut St,"Springfield, MA 01107",Recovery Support Services and Centers,42.1146392,-72.5976206
+68 Federal Street,"Greenfield, MA 01301",Recovery Support Services and Centers,42.5898086,-72.59940329999999
+100 Suffolk St.,"Holyoke, MA 01040",Recovery Support Services and Centers,42.2070145,-72.61077929999999
+373 Worthington Street,"Springfield, MA 01103",Recovery Support Services and Centers,42.1059615,-72.5901106
+81 Linden Street,"Pittsfield, MA 01201",Recovery Support Services and Centers,42.45584540000001,-73.2554115
+2 Gleason Plaza,"Northampton, MA 01060",Recovery Support Services and Centers,42.3378652,-72.6471081
+"141 North Street, Suite 307","Pittsfield, MA 01201",Intervention and Family Support Programs,42.450729,-73.2536606
+179 Northampton St.,"Easthampton, MA 01027",Intervention and Family Support Programs,42.28387499999999,-72.6657697
+1095 Main St. First Floor,"Springfield, MA, 01103",Intervention and Family Support Programs,42.1000915,-72.58531649999999
+251 Fenn Street,"Pittsfield, MA 01201",Intervention and Family Support Programs,42.4499413,-73.2482421
+303 Beech St.,"Holyoke, MA 01040",Intervention and Family Support Programs,42.2041133,-72.61910379999999
+69 Prospect Ave. Apt 32,"Northampton, MA 01060",Intervention and Family Support Programs,42.3329895,-72.6497136
+1233 Main St.,"Holyoke, MA 01040",Intervention and Family Support Programs,42.1661231,-72.633596
+1233 Main St.,"Holyoke, MA 01040",Intervention and Family Support Programs,42.1661231,-72.633596
+165 Tor Court,"Pittsfield, MA",Intervention and Family Support Programs,42.4581621,-73.28123529999999
+242 Green Street,"Gardner, MA",Intervention and Family Support Programs,42.5864159,-71.9870586
+"155 Maple Street, Suite 304","Springfield, MA 01105",Intervention and Family Support Programs,42.1004286,-72.5790129
+"37 Alderman St, Springfield","Springfield, MA 01104",Recovery High School,42.0883421,-72.5590706
+16 Center Street,"Northampton, MA 01060",Overdose Prevention and Syringe Access Programs,42.318971,-72.631646
+15A Main St.,"Holyoke, MA 01040",Overdose Prevention and Syringe Access Programs,42.2054863,-72.6024219
+"130 Maple Street, lower level","Springfield, MA 01103",Overdose Prevention and Syringe Access Programs,42.1001396,-72.5805101
+8 Church Street,"Greenfield, MA 01301",Overdose Prevention and Syringe Access Programs,42.5900806,-72.5986231
+"6 West Main Street, Ground Floor","North Adams, MA",Overdose Prevention and Syringe Access Programs,42.6997255,-73.11506740000002
+"510 North St., Suite 6-B2","Pittsfield, MA 01201",Overdose Prevention and Syringe Access Programs,42.4555476,-73.2510573
+"278 Main Street, Suite 411","Greenfield, MA 01301",Substance Use Prevention Programs,42.588255,-72.6012104
+"61 Main Street, Suite 218","North Adams, MA  01247",Substance Use Prevention Programs,42.7006067,-73.11677019999999
+97 Hawley Street,"Northampton, MA 01060",Substance Use Prevention Programs,42.31824659999999,-72.6253268
+60 Bridge St.,"Great Barrington, MA 01230",Substance Use Prevention Programs,42.192365,-73.3595273
+50 Payson Ave 2nd Floor,"Easthampton, MA 01027",Substance Use Prevention Programs,42.2653652,-72.6695465
+380 Elm Street,"Northampton, MA 01060",Substance Use Prevention Programs,42.325333,-72.650464
+311 State Street,"Springfield, MA 01105",Substance Use Prevention Programs,42.1050146,-72.58128789999999
+"120 Maple Street, Suite 305","Springfield, MA 01103",Substance Use Prevention Programs,42.1007331,-72.5810209
+153 Newton Street,South Hadley MA 01075,Substance Use Prevention Programs,42.227567,-72.5863682
+35 Crocker Avenue,"Turners Falls, MA 01376",Substance Use Prevention Programs,42.599928,-72.55657529999999
+21 Barr Avenue,"Greenfield, MA  01301",Substance Use Prevention Programs,42.6052404,-72.5952992
+1500 Main Street 18th Floor,"Springfield, MA, 01003",Mass Opiate Abuse Prevention Collaboratives ,42.1027686,-72.592123
+1 Fenn St. Suite 302,"Pittsfield, MA 01201",Mass Opiate Abuse Prevention Collaboratives ,42.4502563,-73.2526239
+101 Munson Street,"Greenfield, MA 01301",Mass Opiate Abuse Prevention Collaboratives ,42.577985,-72.62305599999999
+212 Main St Rm 101,"Northampton, MA 01060",Mass Opiate Abuse Prevention Collaboratives ,42.3170556,-72.6320716
+85 St George Road,"Springfield, MA, 01103",Recovery Support Services and Centers,42.1085034,-72.6022268

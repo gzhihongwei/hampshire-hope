@@ -1,11 +1,11 @@
 ﻿street,city_state_zip,treatment_type
-471 Chestnut Street,"Springﬁeld, MA  01107",Acute Treatment Services-Adults
-298 Federal St.,"Greenﬁeld, MA 01301",Acute Treatment Services-Adults
-725 North Street,"Pittsﬁeld, MA  01201",Acute Treatment Services-Adults
-1233 Main Street,"Holyoke, MA  01040",Acute Treatment Services-Adults
-151 South St.,"Cummington, MA 01026",Acute Treatment Services-Adults
-107 Lincoln Street,"Worcester, MA 01605",Acute Treatment Services-Adults
-"12 Queen Street, 5th ﬂoor","Worcester, MA 01610",Acute Treatment and Stabilization Services –Youth
+471 Chestnut Street,"Springﬁeld, MA  01107",Acute Treatment Services
+298 Federal St.,"Greenﬁeld, MA 01301",Acute Treatment Services
+725 North Street,"Pittsﬁeld, MA  01201",Acute Treatment Services
+1233 Main Street,"Holyoke, MA  01040",Acute Treatment Services
+151 South St.,"Cummington, MA 01026",Acute Treatment Services
+107 Lincoln Street,"Worcester, MA 01605",Acute Treatment Services
+"12 Queen Street, 5th ﬂoor","Worcester, MA 01610",Acute Treatment Services
 35 Heywood Terrace,"Springﬁeld, MA 01104",Clinical Support Service
 298 Federal St.,"Greenﬁeld, MA 01301",Clinical Support Service
 725 North Street,"Pittsﬁeld, MA 01201",Clinical Support Service
@@ -56,17 +56,17 @@ One Arch Place,"Greenﬁeld, MA 01301",Outpatient Services
 124 American Legion Drive,"North Adams, MA 01247",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 60 Cottage St.,"Great Barrington, MA 01230",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 40 Wright Street,"Palmer, MA  01069",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"1985 Main Street, Suite E, Springﬁeld",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"306 Race Street, 2nd Floor, Holyoke",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"83 South St. Suite 180, Ware",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"900 Memorial Avenue, West Springﬁeld",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"53 Eagle St., 4th ﬂoor, Pittsﬁeld",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+"1985 Main Street, Suite E","Springﬁeld, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+"306 Race Street, 2nd Floor","Holyoke, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+83 South St. Suite 180,"Ware, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+900 Memorial Avenue,"West Springﬁeld, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+"53 Eagle St., 4th ﬂoor","Pittsﬁeld, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 "77 Hospital Avenue, Suite 107","North Adams, MA 01247",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"201 South Main St., Suite #3, Athol",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"411 Chandler St., Worcester",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-275 Nichols Rd. Fitchburg,N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-50 Union Street,N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
-"42 Summer St. Suite 201, Pittsﬁeld",N/A,Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+"201 South Main St., Suite #3","Athol, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+411 Chandler St.,"Worcester, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+275 Nichols Rd. ,"Fitchburg, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+50 Union Street,"West Springfield, MA 01089",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
+42 Summer St. Suite 201,"Pittsﬁeld, MA",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 51 Locust St.,"Northampton, MA 01060",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 568 Main St.,"Indian Orchard, MA 01151",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
 "125 Liberty Street, Suite 205","Springﬁeld, MA 01103",Ofﬁce-based Opioid Treatment (Buprenorphine and Vivitrol Treatment)
@@ -101,11 +101,11 @@ One Arch Place,"Greenﬁeld, MA 01301",Outpatient Services
 64 and 82 Temple St.,"Springﬁeld, MA  01109",Residential Recovery Programs
 401 Liberty St.,"Springﬁeld, MA 01104",Residential Recovery Programs
 5 Madison Avenue,"Springﬁeld, MA  01105",Residential Recovery Programs
-14 Chestnut Place,"Ludlow, MA",Co-occurring Enhanced Residential Recovery Service
-"20 Wilbraham Ave,","Springﬁeld, MA",Co-occurring Enhanced Residential Recovery Service
-"742 Parker St., East Longmeadow",N/A,Co-occurring Enhanced Residential Recovery Service
-298 Federal St.,"Greenﬁeld, MA 01301",Co-occurring Enhanced Residential Recovery Service
-298 Federal St.,"Greenﬁeld, MA   01301",Jail Diversion Residential and Case Management
+14 Chestnut Place,"Ludlow, MA",Residential Recovery Programs
+"20 Wilbraham Ave,","Springﬁeld, MA",Residential Recovery Programs
+742 Parker St. ,"East Longmeadow, MA 01116",Residential Recovery Programs
+298 Federal St.,"Greenﬁeld, MA 01301",Residential Recovery Programs
+298 Federal St.,"Greenﬁeld, MA   01301",Residential Recovery Programs
 60 Wells Street,"Greenﬁeld, MA  01301",Supportive Housing
 114 Calhoun Street,"Springﬁeld, MA  01107",Supportive Housing
 80 Commercial St.,"Holyoke, MA. 01040",Supportive Housing
@@ -113,22 +113,22 @@ One Arch Place,"Greenﬁeld, MA 01301",Outpatient Services
 184 Bradford Street,"Pittsﬁeld, MA  01201",Supportive Housing
 214 Francis Ave.,"Pittsﬁeld, MA. 01201",Supportive Housing
 1509 N. Main St.,"Palmer, MA 01069",Supportive Housing
-471 Chestnut St 01107,N/A,Recovery Support Services and Centers
+85 St. George Road,"Springfield, MA, 01103",Recovery Support Services and Centers
+471 Chestnut St ,"Springfield, MA 01107",Recovery Support Services and Centers
 68 Federal Street,"Greenﬁeld, MA 01301",Recovery Support Services and Centers
 100 Suffolk St.,"Holyoke, MA 01040",Recovery Support Services and Centers
 373 Worthington Street,"Springﬁeld, MA 01103",Recovery Support Services and Centers
 81 Linden Street,"Pittsﬁeld, MA 01201",Recovery Support Services and Centers
 2 Gleason Plaza,"Northampton, MA 01060",Recovery Support Services and Centers
-"141 North Street, Suite 307",N/A,Intervention and Family Support Programs
+"141 North Street, Suite 307","Pittsfield, MA 01201",Intervention and Family Support Programs
 179 Northampton St.,"Easthampton, MA 01027",Intervention and Family Support Programs
 1095 Main St. First Floor,"Springfield, MA, 01103",Intervention and Family Support Programs
 251 Fenn Street,"Pittsﬁeld, MA 01201",Intervention and Family Support Programs
 303 Beech St.,"Holyoke, MA 01040",Intervention and Family Support Programs
 69 Prospect Ave. Apt 32,"Northampton, MA 01060",Intervention and Family Support Programs
-N/A,"1233 Main St. Holyoke, MA 01040",Intervention and Family Support Programs
-1233 Main St. Holyoke,N/A,Intervention and Family Support Programs
-"165 Tor Court, Pittsﬁeld",N/A,Intervention and Family Support Programs
-"242 Green Street, Gardner",N/A,Intervention and Family Support Programs
+1233 Main St. Holyoke,"Holyoke, MA 01040",Intervention and Family Support Programs
+165 Tor Court,"Pittsﬁeld, MA",Intervention and Family Support Programs
+242 Green Street,"Gardner, MA",Intervention and Family Support Programs
 "155 Maple Street, Suite 304","Springﬁeld, MA 01105",Intervention and Family Support Programs
 "37 Alderman St, Springﬁeld","Springﬁeld, MA 01104",Recovery High School
 16 Center Street,"Northampton, MA 01060",Overdose Prevention and Syringe Access Programs
@@ -137,19 +137,17 @@ N/A,"1233 Main St. Holyoke, MA 01040",Intervention and Family Support Programs
 8 Church Street,"Greenﬁeld, MA 01301",Overdose Prevention and Syringe Access Programs
 "6 West Main Street, Ground Floor","North Adams, MA",Overdose Prevention and Syringe Access Programs
 "510 North St., Suite 6-B2","Pittsﬁeld, MA 01201",Overdose Prevention and Syringe Access Programs
-"278 Main Street, Suite 411","Greenﬁeld, MA 01301",Substance Use Prevention Programs
-"61 Main Street, Suite 218","North Adams, MA  01247",Substance Use Prevention Programs
-97 Hawley Street,"Northampton, MA 01060",Substance Use Prevention Programs
-60 Bridge St.,"Great Barrington, MA 01230",Substance Use Prevention Programs
-50 Payson Ave 2nd Floor,N/A,Substance Use Prevention Programs
-380 Elm Street,"Northampton, MA 01060",Substance Use Prevention Programs
-N/A,"Springﬁeld, MA 01103",Substance Use Prevention Programs
-"120 Maple Street, Suite 305","Springﬁeld, MA 01103",Substance Use Prevention Programs
-153 Newton Street,South Hadley MA 01075,Substance Use Prevention Programs
-35 Crocker Avenue,"Turners Falls, MA 01376",Substance Use Prevention Programs
-21 Barr Avenue,"Greenﬁeld, MA  01301",Substance Use Prevention Programs
-1500 Main Street 18th Floor,"Springfield, MA, 01003",Mass Opiate Abuse Prevention Collaboratives 
-1 Fenn St. Suite 302,"Pittsﬁeld, MA 01201",Mass Opiate Abuse Prevention Collaboratives 
-101 Munson Street,"Greenﬁeld, MA 01301",Mass Opiate Abuse Prevention Collaboratives 
-212 Main St Rm 101,"Northampton, MA 01060",Mass Opiate Abuse Prevention Collaboratives 
-85 St. George Road,"Springfield, MA, 01103",Recovery Support Services and Centers
+"278 Main Street, Suite 411","Greenﬁeld, MA 01301",Substance Abuse Prevention Programs
+"61 Main Street, Suite 218","North Adams, MA  01247",Substance Abuse Prevention Programs
+97 Hawley Street,"Northampton, MA 01060",Substance Abuse Prevention Programs
+60 Bridge St.,"Great Barrington, MA 01230",Substance Abuse Prevention Programs
+50 Payson Ave 2nd Floor,"Easthampton, Ma 01027",Substance Abuse Prevention Programs
+380 Elm Street,"Northampton, MA 01060",Substance Abuse Prevention Programs
+"120 Maple Street, Suite 305","Springﬁeld, MA 01103",Substance Abuse Prevention Programs
+153 Newton Street,South Hadley MA 01075,Substance Abuse Prevention Programs
+35 Crocker Avenue,"Turners Falls, MA 01376",Substance Abuse Prevention Programs
+21 Barr Avenue,"Greenﬁeld, MA  01301",Substance Abuse Prevention Programs
+1500 Main Street 18th Floor,"Springfield, MA, 01003",Substance Abuse Prevention Programs
+1 Fenn St. Suite 302,"Pittsﬁeld, MA 01201",Substance Abuse Prevention Programs
+101 Munson Street,"Greenﬁeld, MA 01301",Substance Abuse Prevention Programs
+212 Main St Rm 101,"Northampton, MA 01060",Substance Abuse Prevention Programs
