@@ -104,12 +104,13 @@ def parse_distance(jsons, origins, destinations):
     return dictionary
 
 
-# Looking to average the distances of all information of latitude and longitude
+# TODO: Looking to average the distances of all information of latitude
+# and longitude
 def average_distances():
     pass
 
 
-# TODO: Save out info from call_distance_api
+# TODO: Save out info from call_distance_api (Need to do in batches)
 def save_info(API_KEY):
     origins = './Points/filtered.json'
     destinations = './Points/dest_points.json'
@@ -118,22 +119,38 @@ def save_info(API_KEY):
     with open('./Points/matrix_info.json', 'w') as f:
         json.dump(json_obj, f)
 
-# TODO: Scrape information from facilities_geocoded.csv
+# Scrape information from facilities_geocoded.csv
 def scrape_facilities():
     df = pd.read_csv('./hh_resources/facilities_geocoded.csv')
-    df.drop(columns=['street', 'city_state_zip', 'treatment_type'], inplace=True)
+
+    # Create a 2d list to store latitudes and longitudes
     dest_points = list()
     for i, row in df.iterrows():
         dest_points.append([row['latitude'], row['longitude']])
+
+
+    # Write data to dest_points.
     with open('./Points/dest_points.json', 'w') as fp:
         json.dump(dest_points, fp)
-        # fp.write('\n')  # Add a newline to very end (optional).
+
+    # Get each facility and put it in different destination files
+    facility_dict = dict()
+    for i, row in df.iterrows():
+        if row['treatment_type']  not in facility_dict:
+            facility_dict[row['treatment_type']] = []
+        facility_dict[row['treatment_type']].append([row['latitude'], row['longitude']])
+
+    # Iterate through each treatment type and put it into
+    # its own json file
+    for key, value in facility_dict.items():
+        with open('./Points/' + key + ".json", 'w') as f:
+            json.dump(value, f)
 
 def main():
     # API key for testing
     API_KEY = "AIzaSyBw7GB7DTvcrp0zprjarUvCuSij_gdcnBw"
-    # scrape_facilities()
-    save_info(API_KEY)
+    scrape_facilities()
+    # save_info(API_KEY)
     # test points using known addresses
     # # 471 Chestnut St, Springfield, MA 01107: 42.114440,-72.597300
     #
