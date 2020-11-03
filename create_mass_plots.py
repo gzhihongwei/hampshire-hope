@@ -53,6 +53,89 @@ class MassPlot:
         towns_df = self._get_town_coords()
         self.mass_towns_geoframe = pd.concat((self.mass_towns_geoframe, towns_df), axis=1)
 
+    def test_routes_map(self, points):
+        # define default plot attributes
+        default_plot_attr = {
+            'base_edgecolor': 'black',
+            'base_facecolor': 'white',
+            'base_alpha': 0.5,
+            'county_borders': True,
+            'town_borders': True,
+            'county_border_color': 'black',
+            'town_border_color': 'grey',
+            'county_border_alpha': 1,
+            'town_border_alpha': 1,
+            'plot_title': 'Example Hampshire County HeatMap',
+            'legend_label': 'idk',
+            'county_names': True,
+            'town_names': True,
+            'county_names_color': 'black',  # darkish yellow kinda
+            'town_names_color': 'grey',
+            'county_names_alpha': 1,
+            'town_names_alpha': 1,
+            'county_names_fontsize': 'large',
+            'town_names_fontsize': 'xx-small',
+            'county_names_fontweight': 'bold',
+            'town_names_fontweight': 'normal',
+        }
+
+        # plot base mass map and get its box bounds
+        fig, ax = self._plot_mass(default_plot_attr)
+
+        # test data
+        routes = {}
+        for row in points.itertuples():
+            x, y = stateplane.from_latlon(row.Latitude, row.Longitude)
+
+            if row.LongName not in routes:
+                routes[row.LongName] = {
+                    'x': [x],
+                    'y': [y]
+                }
+            else:
+                routes[row.LongName]['x'].append(x)
+                routes[row.LongName]['y'].append(y)
+
+        cols = ['red', 'blue', 'green', 'purple', 'brown', 'yellow']
+        for i, r in enumerate(routes):
+            ax.scatter(routes[r]['x'], routes[r]['y'], c=cols[i % len(cols)])
+            ax.plot(routes[r]['x'], routes[r]['y'], c=cols[i % len(cols)])
+
+        # plot town labels
+        if default_plot_attr['town_names']:
+            for row in self.mass_towns_geoframe.itertuples():
+                x, y = row.centroid_x, row.centroid_y
+                ax.annotate(row.centroid_town, xy=(x, y), horizontalalignment='center', verticalalignment='center',
+                            fontsize=default_plot_attr['town_names_fontsize'],
+                            alpha=default_plot_attr['town_names_alpha'],
+                            color=default_plot_attr['town_names_color'],
+                            fontweight=default_plot_attr['town_names_fontweight'])
+
+        # plot county labels
+        if default_plot_attr['county_names']:
+            for row in self.mass_counties_geoframe.itertuples():
+                x, y = row.centroid_x, row.centroid_y
+                ax.annotate(row.centroid_county, xy=(x, y), horizontalalignment='center', verticalalignment='center',
+                            fontsize=default_plot_attr['county_names_fontsize'],
+                            alpha=default_plot_attr['county_names_alpha'],
+                            color=default_plot_attr['county_names_color'],
+                            fontweight=default_plot_attr['county_names_fontweight'])
+
+        # plot town and county borders on top of heatmap points
+        if default_plot_attr['town_borders']:
+            self.mass_towns_geoframe.plot(ax=ax, figsize=(10, 10), color='none',
+                                          alpha=default_plot_attr['town_border_alpha'],
+                                          edgecolor=default_plot_attr['town_border_color'])
+        if default_plot_attr['county_borders']:
+            self.mass_counties_geoframe.plot(ax=ax, figsize=(10, 10), facecolor='none',
+                                             alpha=default_plot_attr['county_border_alpha'],
+                                             edgecolor=default_plot_attr['county_border_color'])
+
+        ax.set_title(default_plot_attr['plot_title'])
+
+        # show plot
+        plt.show()
+
     def plot_mass_heatmap(self, points_dataframe, heat_feature_col, plot_attr=None):
         """
         Plot a heatmap of mass based on given reference points dataframe and a column variable to use as "heat"
@@ -167,7 +250,7 @@ class MassPlot:
             'county_borders': True,
             'town_borders': True,
             'county_border_color': 'black',
-            'town_border_color': 'grey',   # pink
+            'town_border_color': 'grey',  # pink
             'county_border_alpha': 1,
             'town_border_alpha': 1,
             'plot_title': 'Example Hampshire County Choropleth Map',
@@ -175,7 +258,7 @@ class MassPlot:
             'county_names': True,
             'town_names': True,
             'county_names_color': 'black',
-            'town_names_color': 'grey',    # pink
+            'town_names_color': 'grey',  # pink
             'county_names_alpha': 1,
             'town_names_alpha': 1,
             'county_names_fontsize': 'xx-large',
@@ -254,7 +337,6 @@ class MassPlot:
                                              vmin=default_plot_attr['choropleth_min_val'],
                                              vmax=default_plot_attr['choropleth_max_val'],
                                              cmap=default_plot_attr['choropleth_color_map'])
-
 
         # plot town labels
         if default_plot_attr['town_names']:
@@ -488,18 +570,24 @@ def main():
     mass_plot = MassPlot()
     mass_plot.plot_mass_heatmap(points, 'price', plot_attr={'legend_label': 'SPCS Coordinate System Easting Value'})
 
-    # plot choropleths of Mass based on overdose deaths by town
+    # load in overdose csv data and edit column names
     df = pd.read_csv(TOWN_OVERDOSE_DATE_BY_YEAR)
     col_names = list(df.columns[:2])
     col_names.extend([f'{year} overdose deaths' for year in df.columns[2:]])
     df.set_axis(col_names, axis='columns', inplace=True)
+
+    # plot choropleths of Mass based on overdose deaths by town
     mass_plot.plot_mass_choropleth(df, '2015 overdose deaths', 'City/Town Name',
-                                   plot_attr={'choropleth_max_val': 5})
+                                   plot_attr={'choropleth_max_val': None})
 
     # plot choropleths of Mass based on test data by county
     df2 = pd.read_csv("./map_files/mass_counties_test.csv")
     mass_plot.plot_mass_choropleth(df2, 'example_feature_col', 'centroid_county', by_town=False,
                                    plot_attr={'choropleth_color_map': 'Blues'})
+
+    # load in and test routes data csv
+    df = pd.read_csv("./pvta_routes/PVTA_Route_Data.csv")
+    mass_plot.test_routes_map(df)
 
 
 if __name__ == '__main__':
