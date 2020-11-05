@@ -2,11 +2,13 @@ import requests
 import json
 import datetime
 from datetime import timezone
+import pandas as pd
 
 # beginning of every API call to the Google Matrix API for json objects
 URL_DIST = "https://maps.googleapis.com/maps/api/distancematrix/json?"
 
-def call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour = 0):
+
+def call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour=0):
     """
       Creates and calls a url for the Google Distance Matrix to retrieve the corresponding JSON object to the API call
 
@@ -50,7 +52,8 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
     str_of_dest = str_of_dest[:-1]
 
     # converts given year, month, hour to UTC time; assumes day as the 1st of the given month and minute and second at 0
-    time = datetime.datetime(year=arrival_year, month=arrival_month, day=arrival_day, hour=arrival_hour, minute=0, second=0)
+    time = datetime.datetime(year=arrival_year, month=arrival_month, day=arrival_day, hour=arrival_hour, minute=0,
+                             second=0)
     utc_time = time.replace(tzinfo=timezone.utc)
     utc_timestamp = utc_time.timestamp()
 
@@ -73,37 +76,74 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
     json_object = req.json()
 
     # prints json_object for testing purposes
-    #print(json_object)
+    # print(json_object)
 
     # returns a JSON object for parsing
     return json_object
 
+
 def parse_distance(jsons, origins, destinations):
-    #Instantiates empty dictionary
+    # Instantiates empty dictionary
     dictionary = {}
-    #Iterate through each origin and destination
+    # Iterate through each origin and destination
     for origin in origins:
         i = 0
         distances = []
         durations = []
         for destination in destinations:
             j = 0
-            #Extracts distance and durations from json
+            # Extracts distance and durations from json
             distance = jsons["rows"][i]["elements"][j]["distance"]["value"]
             duration = jsons["rows"][i]["elements"][j]["duration"]["value"]
             distances.append(distance)
             durations.append(duration)
             j += 1
-        #Assigns the duration and distance list to the dictionary
+        # Assigns the duration and distance list to the dictionary
         dictionary[origin] = {"distance": distances, "duration": durations}
         i += 1
     return dictionary
 
 
-def main():
-    #API key for testing
-    API_KEY = "AIzaSyBw7GB7DTvcrp0zprjarUvCuSij_gdcnBw"
+# TODO: Looking to average the distances of all information of latitude
+# and longitude
+def average_distances():
+    pass
 
+
+# TODO: Save out info from call_distance_api (Need to do in batches)
+def save_info(API_KEY):
+    origins = './geocoded/filtered.json'
+    # TODO: We need to do this in batcnes and call the distance API
+    destinations = ''
+    # Utilize the API key here
+    # for future testing: create two json files with an array of tuples for the origin and destination lat/long points
+    # call_distance_api(
+    #     "test_origin.json",
+    #     "test_dest.json",
+    #     API_KEY, 2020, 11, 3, 15)
+
+
+# Scrape information from facilities_geocoded.csv
+def scrape_facilities():
+    df = pd.read_csv('./hh_resources/facilities_geocoded.csv')
+
+    # Get each facility and put it in different destination files
+    facility_dict = dict()
+    for _, row in df.iterrows():
+        if row['treatment_type']  not in facility_dict:
+            facility_dict[row['treatment_type']] = []
+        facility_dict[row['treatment_type']].append([row['latitude'], row['longitude']])
+
+    # Iterate through each treatment type and put it into
+    # its own json file
+    for treatment_type, points in facility_dict.items():
+        with open('./facilities/' + treatment_type + ".json", 'w') as f:
+            json.dump(points, f)
+
+def main():
+    # API key for testing
+    API_KEY = "AIzaSyBw7GB7DTvcrp0zprjarUvCuSij_gdcnBw"
+    scrape_facilities()
     # test points using known addresses
     # # 471 Chestnut St, Springfield, MA 01107: 42.114440,-72.597300
     #
@@ -116,8 +156,6 @@ def main():
     #     "test_origin.json",
     #     "test_dest.json",
     #     API_KEY, 2020, 11, 3, 15)
-
-
 
 
 if __name__ == "__main__":
