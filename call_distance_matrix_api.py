@@ -112,45 +112,32 @@ def average_distances():
 
 # TODO: Save out info from call_distance_api (Need to do in batches)
 def save_info(API_KEY):
-    origins = './Points/filtered.json'
-    destinations = './Points/dest_points.json'
-    json_obj = call_distance_api(origins, destinations, API_KEY, 2020, 11, 3, 15)
-    # call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour=0)
-    with open('./Points/matrix_info.json', 'w') as f:
-        json.dump(json_obj, f)
+    origins = './geocoded/filtered.json'
+    # TODO: We need to do this in batcnes and call the distance API
+    destinations = ''
+
 
 # Scrape information from facilities_geocoded.csv
 def scrape_facilities():
     df = pd.read_csv('./hh_resources/facilities_geocoded.csv')
 
-    # Create a 2d list to store latitudes and longitudes
-    dest_points = list()
-    for i, row in df.iterrows():
-        dest_points.append([row['latitude'], row['longitude']])
-
-
-    # Write data to dest_points.
-    with open('./Points/dest_points.json', 'w') as fp:
-        json.dump(dest_points, fp)
-
     # Get each facility and put it in different destination files
     facility_dict = dict()
-    for i, row in df.iterrows():
+    for _, row in df.iterrows():
         if row['treatment_type']  not in facility_dict:
             facility_dict[row['treatment_type']] = []
         facility_dict[row['treatment_type']].append([row['latitude'], row['longitude']])
 
     # Iterate through each treatment type and put it into
     # its own json file
-    for key, value in facility_dict.items():
-        with open('./Points/' + key + ".json", 'w') as f:
-            json.dump(value, f)
+    for treatment_type, points in facility_dict.items():
+        with open('./facilities/' + treatment_type + ".json", 'w') as f:
+            json.dump(points, f)
 
 def main():
     # API key for testing
     API_KEY = "AIzaSyBw7GB7DTvcrp0zprjarUvCuSij_gdcnBw"
     scrape_facilities()
-    # save_info(API_KEY)
     # test points using known addresses
     # # 471 Chestnut St, Springfield, MA 01107: 42.114440,-72.597300
     #
