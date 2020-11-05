@@ -6,7 +6,7 @@ from datetime import timezone
 # beginning of every API call to the Google Matrix API for json objects
 URL_DIST = "https://maps.googleapis.com/maps/api/distancematrix/json?"
 
-def call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour):
+def call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour = 0):
     """
       Creates and calls a url for the Google Distance Matrix to retrieve the corresponding JSON object to the API call
 
@@ -73,10 +73,31 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
     json_object = req.json()
 
     # prints json_object for testing purposes
-    print(json_object)
+    #print(json_object)
 
     # returns a JSON object for parsing
     return json_object
+
+def parse_distance(jsons, origins, destinations):
+    #Instantiates empty dictionary
+    dictionary = {}
+    #Iterate through each origin and destination
+    for origin in origins:
+        i = 0
+        distances = []
+        durations = []
+        for destination in destinations:
+            j = 0
+            #Extracts distance and durations from json
+            distance = jsons["rows"][i]["elements"][j]["distance"]["value"]
+            duration = jsons["rows"][i]["elements"][j]["duration"]["value"]
+            distances.append(distance)
+            durations.append(duration)
+            j += 1
+        #Assigns the duration and distance list to the dictionary
+        dictionary[origin] = {"distance": distances, "duration": durations}
+        i += 1
+    return dictionary
 
 
 def main():
