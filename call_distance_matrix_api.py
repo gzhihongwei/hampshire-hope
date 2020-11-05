@@ -115,6 +115,12 @@ def save_info(API_KEY):
     origins = './geocoded/filtered.json'
     # TODO: We need to do this in batcnes and call the distance API
     destinations = ''
+    # Utilize the API key here
+    # for future testing: create two json files with an array of tuples for the origin and destination lat/long points
+    # call_distance_api(
+    #     "test_origin.json",
+    #     "test_dest.json",
+    #     API_KEY, 2020, 11, 3, 15)
 
 
 # Scrape information from facilities_geocoded.csv
