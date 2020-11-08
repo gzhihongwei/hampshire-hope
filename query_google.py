@@ -1,12 +1,11 @@
 import requests
 import json
 import datetime
-from datetime import timezone
 import pandas as pd
+from datetime import timezone
 
 # beginning of every API call to the Google Matrix API for json objects
 URL_DIST = "https://maps.googleapis.com/maps/api/distancematrix/json?"
-
 
 def call_distance_api(origins, destinations, key, arrival_year, arrival_month, arrival_day, arrival_hour=0):
     """
@@ -16,8 +15,8 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
 
       Parameters
       ---
-      - origins: path to json file with an array of tuples containing latitude and longitude of origin points
-      - destinations: path to json file with an array of tuples containing latitude and longitude of destination points
+      - origins: list of tuples containing latitude and longitude of origin points
+      - destinations: list of tuples containing latitude and longitude of destination points
       - key: key for Google Cloud project needed for all calls to Google APIs
       Note: arrival_year, arrival_month, arrival_hour will only allow us to get useful information if
       the given year, month, and hour are within the next few weeks of the API call because Google doesn't
@@ -32,19 +31,16 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
       ---
       - json_object: contains the json object produced from the API call
       """
-    file_origin = open(origins)
-    file_dest = open(destinations)
-    json_origin = json.load(file_origin)
-    json_dest = json.load(file_dest)
+    
     str_of_origin = ""
     str_of_dest = ""
     # creates a string of all the lats and longs of each origin point in the array of origins in the
     # form of lat,long|lat,long|...
-    for origin in json_origin:
+    for origin in origins:
         str_of_origin += str(origin[0]) + "," + str(origin[1]) + "|"
     # creates a string of all the lats and longs of each destination point in the array of destinations in the
     # form of lat,long|lat,long|...
-    for dest in json_dest:
+    for dest in destinations:
         str_of_dest += str(dest[0]) + "," + str(dest[1]) + "|"
 
     # removes the last | from both strings
@@ -67,7 +63,7 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
                 + "&key=" + key
 
     # prints final URL for testing purposes
-    print(final_url)
+    # print(final_url)
 
     # requests given URL
     req = requests.get(final_url)
@@ -82,25 +78,51 @@ def call_distance_api(origins, destinations, key, arrival_year, arrival_month, a
     return json_object
 
 
-def parse_distance(jsons, origins, destinations):
+def parse_distance(jsons, origins):
+    """
+    Function that parses a json object returned from the Google's Distance Matrix API and
+    returns a dictionary mapping latitude, longitude points to a dictionary of their distances
+    to each treatment center as well as the associated duration. The list of distances and durations
+    are empty if there are 0 results.
+    
+    Parameters
+    ----------
+    - jsons: dict
+        JSON object in dictionary form for the query result from Google's Distance Matrix API
+    - origins: list[list[int]]
+        List of all origin points
+        
+    Returns
+    -------
+    - dict
+        Dictionary that maps points to distances and durations accordingly
+    """
+    
     # Instantiates empty dictionary
-    dictionary = {}
+    dictionary = dict()
+    
     # Iterate through each origin and destination
-    for origin in origins:
-        i = 0
+    for i, origin in enumerate(origins):
+        
         distances = []
         durations = []
-        for destination in destinations:
-            j = 0
+        
+        for destination in jsons["rows"][i]["elements"]:
+            
+            # No results
+            if "distance" not in destination:
+                continue
+            
             # Extracts distance and durations from json
-            distance = jsons["rows"][i]["elements"][j]["distance"]["value"]
-            duration = jsons["rows"][i]["elements"][j]["duration"]["value"]
+            distance = destination["distance"]["value"]
+            duration = destination["duration"]["value"]
             distances.append(distance)
             durations.append(duration)
-            j += 1
-        # Assigns the duration and distance list to the dictionary
-        dictionary[origin] = {"distance": distances, "duration": durations}
-        i += 1
+            
+        # Assigns the duration and distance list to the dictionary if they are not empty
+        if distances and durations: 
+            dictionary[tuple(origin)] = {"distance": distances, "duration": durations}
+
     return dictionary
 
 
@@ -139,11 +161,12 @@ def scrape_facilities():
     for treatment_type, points in facility_dict.items():
         with open('./facilities/' + treatment_type + ".json", 'w') as f:
             json.dump(points, f)
+            
 
 def main():
     # API key for testing
     API_KEY = "AIzaSyBw7GB7DTvcrp0zprjarUvCuSij_gdcnBw"
-    scrape_facilities()
+
     # test points using known addresses
     # # 471 Chestnut St, Springfield, MA 01107: 42.114440,-72.597300
     #
