@@ -1,7 +1,8 @@
 import itertools
 import json
-
 import numpy as np
+
+from pathlib import Path
 from geopy.geocoders import Nominatim
 
 
@@ -91,38 +92,60 @@ def filter_points(points, counties):
 
 
 def main():
-    # Gets the bounding boxes for Hampshire
-    geolocator = Nominatim(user_agent="DSC-WAV")
-    hampshire = geolocator.geocode("Hampshire County, MA")
-    hampshire_bb = list(map(float, hampshire.raw['boundingbox']))
-    # Gets the bounding boxes for Hampden
-    hampden = geolocator.geocode("Hampden County, MA")
-    hampden_bb = list(map(float, hampden.raw['boundingbox']))
-
-    # Gets the points in the bounding boxes for each county
-    hampshire_points = bounding_box_to_points(*hampshire_bb, 128, 128)
-    hampden_points = bounding_box_to_points(*hampden_bb, 128, 128)
     
-    # Counties to consider
-    counties = ["Hampshire County", "Hampden County"]
+    # Load raw points if they exist
+    raw_points_file = Path("raw_points.json")
+    
+    if not raw_points_file.is_file():
+        # Gets the bounding boxes for Hampshire
+        geolocator = Nominatim(user_agent="DSC-WAV")
+        hampshire = geolocator.geocode("Hampshire County, MA")
+        hampshire_bb = list(map(float, hampshire.raw['boundingbox']))
+        # Gets the bounding boxes for Hampden
+        hampden = geolocator.geocode("Hampden County, MA")
+        hampden_bb = list(map(float, hampden.raw['boundingbox']))
 
-    # Dumps all of the points into a json file called "raw_points.json"
-    json.dump(hampshire_points + hampden_points, open('raw_points.json', 'w'))
-    # Checking the number of points generated
-    print(len(hampshire_points + hampden_points))
+        # Gets the points in the bounding boxes for each county
+        hampshire_points = bounding_box_to_points(*hampshire_bb, 32, 32)
+        hampden_points = bounding_box_to_points(*hampden_bb, 32, 32)
+        
+        # Counties to consider
+        counties = ["Hampshire County", "Hampden County"]
+
+        # Dumps all of the points into a json file called "raw_points.json"
+        json.dump(hampshire_points + hampden_points, open('raw_points.json', 'w'))
     
     # Gets all of the raw points
     raw_points = json.load(open("raw_points.json", "r"))
     
+    # Signal to user
+    print("Raw points loaded")
+    
+    # Keeps track where in `indices` we are
+    start = 0
+    
+    # A file signaling which index of `indices` to start at
+    next_start = Path("next_start.json")
+    
+    # Checks if we have a next_start index to start at
+    if next_start.is_file():
+        start = json.load(open("next_start.json", "r"))
+
+    # Checks if start changed
+    print(f"Start index of indices: {start}")
+    
     # Gets a list of the indices to split the raw points into smaller sections
     indices = list()
     
+    # Number of batches to split points into
+    num_batches = 6
+    
     # I chose 5 batches in this case
-    for i in range(5):
-        indices.append(len(raw_points) * i // 5)
+    for i in range(num_batches):
+        indices.append(len(raw_points) * i // num_batches)
     
     # I adjusted the start of this range because sometimes Nominatim crashed
-    for i in range(len(indices)):
+    for i in range(start, len(indices)):
         # Slices the raw points based on the indices
         if i == 0:
             points = filter_points(raw_points[:indices[i + 1]], counties)
@@ -135,7 +158,7 @@ def main():
         print(f"\n Done with {i}\n")
         
         # Dump which index would be the start in range 
-        json.dump(i + 1, open("done.json", "a+"))
+        json.dump(i + 1, open("next_start.json", "w"))
         
         # Loads all of the points we have filtered so far
         # Intially I had `points.json` be an empty list
@@ -145,6 +168,9 @@ def main():
         # Redump the filtered points
         json.dump(points_so_far, open("points.json", "w"))
     
+    # Delete unnecessary files
+    raw_points_file.unlink()
+    next_start.unlink()
     
 if __name__ == "__main__":
     main()
