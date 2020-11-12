@@ -6,8 +6,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PyDocumentationSettings">
+<<<<<<< HEAD
     <option name="format" value="NUMPY" />
     <option name="myDocStringFormat" value="NumPy" />
+=======
+    <option name="renderExternalDocumentation" value="true" />
+>>>>>>> 84f6764 (Extract PVTA times finished)
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
