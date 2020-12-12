@@ -6,14 +6,6 @@
 3. To install Jupyter Notebook, run `pip install notebook` in your terminal. You should be seeing progress bars of the install.
 4. In order to see if Jupyter Notebook was successfully installed, run `jupyter notebook` in your terminal. If successful, the terminal will prompt you to copy a link like `http://localhost:8888/?token=SESSION_TOKEN` into your browser or will automatically open a new tab. If this doesn't happen, redo step 3.
 
-## Installing Other Dependencies
-
-All other dependencies of the notebook should be able to be installed by running the command below.
-
-```bash
-pip install -r requirements.txt
-```
-   
 ## Installing `gmaps`
 
 1. Enable `ipywidgets` widgets extension by running `jupyter nbextension enable --py --sys-prefix widgetsnbextension` in your terminal
