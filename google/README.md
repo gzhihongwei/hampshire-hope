@@ -20,4 +20,8 @@ pip install -r requirements.txt
 2. Then, install `gmaps` by running the command `pip install gmaps` in your terminal.
 3. Finally, load the extension into Jupyter with `jupyter nbextension enable --py --sys-prefix gmaps`. 
 
+## Enabling Google's APIs
+
+In order to query from the Distance Matrix API and to generate a heatmap, you must have a valid project on [Google Cloud Platform](https://console.cloud.google.com/home/). In order to create a project, navigate to the dropdown next to "Google Cloud Platform" on the top navigation bar. Afterwards, click on the three lines on the top navigation bar to reveal the sidebar. From here, click on "APIs & Services". There should be a blue "+" sign saying to "ENABLE APIS AND SERVICES". Click on that and search up "Distance Matrix" and "Maps JavaScript". Enable these two APIs, otherwise you will encounter errors when trying to run the notebook.
+
 Navigate to the `google` directory using the `cd` command in your terminal. After navigating there, run `jupyter notebook` and you should be able to navigate to `heatmap.ipynb` from there. That should be everything. If something is not working, email <georgewei369@yahoo.com> (or just slack).
