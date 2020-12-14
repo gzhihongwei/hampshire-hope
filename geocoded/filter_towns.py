@@ -51,12 +51,14 @@ def filter_counties_towns(points, counties, cities):
         raw = reverse.raw["address"]
         # Increments number of points filtered
         num["x"] += 1
-        
+
+        # print(raw)
         # Logging for checking progress
-        print(f'Number filtered so far: {num["x"]}, County: {raw["county"]}')        
+        if "county" in raw:
+            print(f'Number filtered so far: {num["x"]}, County: {raw["county"]}')
         
         # Keep point if it is in `counties`
-        if raw["county"] in counties:
+        if "county" in raw and raw["county"] in counties:
             return True
         
         # Keep point if point is in a town, which is in `cities`
