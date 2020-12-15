@@ -1,6 +1,7 @@
 import itertools
 import json
 import numpy as np
+import csv
 
 from pathlib import Path
 from geopy.geocoders import Nominatim
@@ -117,6 +118,19 @@ def main():
     
     # Gets all of the raw points
     raw_points = json.load(open("raw_points.json", "r"))
+
+    # Gather the hospital list of points
+
+    hospital_points = list()
+    with open("hospitals.csv", 'r', newline='') as f:
+        reader = csv.reader(f)
+        next(reader)
+        hospital_points = [[float(row[1]), float(row[2])] for row in reader]
+
+    # Add hospital points to the raw list of points
+    for hospital in hospital_points:
+        raw_points.append(hospital)
+
     
     # Signal to user
     print("Raw points loaded")
