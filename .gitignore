@@ -140,15 +140,8 @@ cython_debug/
 # pycharm
 **.idea/
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-# Too big of a file
-**/heatmap.ipynb
-=======
+## Too big of a file
+#**/heatmap.ipynb
+
 # anyones personal local folders
 /my_test_data
->>>>>>> c424f3f02648f46abcef2ebe7dcb9804de5b6dd0
-=======
-# anyones personal local folders
-/my_test_data
->>>>>>> c424f3f02648f46abcef2ebe7dcb9804de5b6dd0
