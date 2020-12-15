@@ -21,10 +21,13 @@ import string
 MASS_FIPS_CODE = 25
 MASS_COUNTIES_COORDS_PATH = "./map_files/mass_counties_coords.csv"
 MASS_TOWNS_COORDS_PATH = "./map_files/mass_towns_coords.csv"
-REFERENCE_POINTS_PATH = "./Points/points.json"
+REFERENCE_POINTS_PATH = "./geocoded/points.json"
 MASS_COUNTIES_SHAPEFILE_PATH = "./map_files/mass_counties/COUNTIES_POLYM.shp"
 MASS_TOWNS_SHAPEFILE_PATH = "./map_files/mass_towns/TOWNSSURVEY_POLYM.shp"
 TOWN_OVERDOSE_DATE_BY_YEAR = "./opioid_data/table1.csv"
+
+WESTERN_MASS_BOX_COORDS = ((26000, 202900), (850000, 950000))
+HAMPSHIRE_COUNTY_BOX_COORDS = ((66560, 153130), (855800, 930000))
 
 
 class MassPlot:
@@ -168,6 +171,8 @@ class MassPlot:
             'town_names_fontsize': 'xx-small',
             'county_names_fontweight': 'bold',
             'town_names_fontweight': 'normal',
+            'heatmap_cmap': 'Blues',
+            'heatmap_markersize': 100
         }
 
         # update default plot attributes with ones passed to method
@@ -191,8 +196,10 @@ class MassPlot:
         # points_dataframe = points_dataframe.drop(labels=bad_points,axis=0)
 
         # plot heatmap points
-        points_dataframe.plot(ax=ax, cmap='viridis', column=heat_feature_col, legend=True,
-                              legend_kwds={'label': default_plot_attr['legend_label']})
+        points_dataframe.plot(ax=ax, column=heat_feature_col, legend=True,
+                              legend_kwds={'label': default_plot_attr['legend_label']},
+                              cmap=default_plot_attr['heatmap_cmap'],
+                              markersize=default_plot_attr['heatmap_markersize'])
 
         # plot town labels
         if default_plot_attr['town_names']:
@@ -245,7 +252,7 @@ class MassPlot:
         # define default plot attributes
         default_plot_attr = {
             'base_edgecolor': 'black',
-            'base_facecolor': 'red',
+            'base_facecolor': 'white',
             'base_alpha': 0.5,
             'county_borders': True,
             'town_borders': True,
@@ -301,6 +308,11 @@ class MassPlot:
 
             self.mass_towns_geoframe[choropleth_feature_col] = choropleth_col
 
+            remove_points_outside_XY_range(self.mass_towns_geoframe, choropleth_feature_col,
+                                           'centroid_x',
+                                           'centroid_y',
+                                           HAMPSHIRE_COUNTY_BOX_COORDS)
+
             self.mass_towns_geoframe.plot(column=choropleth_feature_col, ax=ax, legend=True,
                                           legend_kwds={'label': default_plot_attr['legend_label']},
                                           vmin=default_plot_attr['choropleth_min_val'],
@@ -331,6 +343,8 @@ class MassPlot:
                 choropleth_col[idx] = choropleth_val
 
             self.mass_counties_geoframe[choropleth_feature_col] = choropleth_col
+
+            exclude_counties(self.mass_counties_geoframe, choropleth_feature_col, 'COUNTY', ['HAMPSHIRE', 'HAMPDEN'])
 
             self.mass_counties_geoframe.plot(column=choropleth_feature_col, ax=ax, legend=True,
                                              legend_kwds={'label': default_plot_attr['legend_label']},
@@ -395,9 +409,21 @@ class MassPlot:
         :param plot_attr: dictionary of plot attributes
         :return: matplotlib figure and axes objects
         """
+
+        if 'x_range' not in plot_attr:
+            plot_attr['x_range'] = HAMPSHIRE_COUNTY_BOX_COORDS[0]  # WESTERN_MASS_BOX_COORDS[0]
+        if 'y_range' not in plot_attr:
+            plot_attr['y_range'] = HAMPSHIRE_COUNTY_BOX_COORDS[1]  # WESTERN_MASS_BOX_COORDS[1]
+
         # create base matplotlib plot
         fig, ax = plt.subplots()
         ax.set_aspect('equal')
+
+        # set plot limits (preferably zoom in on western mass or hampshire county)
+        ax.set_xlim(*plot_attr['x_range'])
+        ax.set_ylim(*plot_attr['y_range'])
+
+        # remove areas outside of
 
         # plot mass shape based off one of the GeoDataFrames, does not matter which to get base mass shape
         self.mass_counties_geoframe.plot(ax=ax, figsize=(10, 10), alpha=plot_attr['base_alpha'],
@@ -588,6 +614,22 @@ def main():
     # load in and test routes data csv
     df = pd.read_csv("./pvta_routes/PVTA_Route_Data.csv")
     mass_plot.test_routes_map(df)
+
+
+def remove_points_outside_XY_range(df, value_col_name, x_col_name, y_col_name, xy_ranges):
+    (x_min, x_max), (y_min, y_max) = xy_ranges
+
+    for i, row in df.iterrows():
+        if row[x_col_name] > x_max or row[x_col_name] < x_min or row[y_col_name] > y_max or row[y_col_name] < y_min:
+            df.at[i, value_col_name] = None
+
+
+def exclude_counties(df, value_col_name, county_col_name, included_counties):
+    included_counties = set(included_counties)
+
+    for i, row in df.iterrows():
+        if row[county_col_name] not in included_counties:
+            df.at[i, value_col_name] = None
 
 
 if __name__ == '__main__':
