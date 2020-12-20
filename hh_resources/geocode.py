@@ -19,8 +19,8 @@ def add_lat_long(row):
         The row passed in with additional latitude and longitude columns 
     """
     
-    # My Google API key (please don't use mine)
-    API_KEY = "AIzaSyC2CFyh-OE27egOLMYdWyXoglF-aA4LET8"
+    # Google API key
+    API_KEY = "API_KEY_HERE"
     # Geolocator for geocoding address
     geolocator = GoogleV3(api_key=API_KEY, user_agent="DSV-WAV")
     # Splits on points in the street address that are necessary 
