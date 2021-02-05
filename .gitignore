@@ -140,8 +140,5 @@ cython_debug/
 # pycharm
 **.idea/
 
-## Too big of a file
-#**/heatmap.ipynb
-
 # anyones personal local folders
 /my_test_data
